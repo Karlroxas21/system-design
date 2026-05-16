@@ -1,0 +1,880 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>System Design — Preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FAFAF7;
+    --surface: #F1F0EC;
+    --raised: #FFFFFF;
+    --border: #E4E2DC;
+    --border-strong: #CDCAC2;
+    --text-muted: #7C7872;
+    --text: #1A1917;
+    --ink: #0E0D0C;
+
+    --brand: #E8A317;
+    --brand-hover: #D4920F;
+    --brand-soft: #FBE9C1;
+    --secondary: #0F7B8A;
+    --secondary-soft: #CFE6EA;
+
+    --success: #2F7D3C;
+    --success-soft: #D9EBDC;
+    --warning: #C2700A;
+    --warning-soft: #F7E2C1;
+    --error: #B5302B;
+    --error-soft: #F2D2D0;
+    --info: #2563A8;
+    --info-soft: #D2E0F0;
+
+    --r-xs: 2px;
+    --r-sm: 4px;
+    --r-md: 6px;
+    --r-lg: 8px;
+    --r-pill: 9999px;
+
+    --hair: 1px solid var(--border);
+    --hair-strong: 1px solid var(--border-strong);
+
+    --s-1: 4px;  --s-2: 8px;  --s-3: 12px; --s-4: 16px;
+    --s-5: 20px; --s-6: 24px; --s-8: 32px; --s-10: 40px;
+    --s-12: 48px; --s-16: 64px;
+  }
+  [data-theme="dark"] {
+    --bg: #0E0D0C;
+    --surface: #171614;
+    --raised: #1F1E1B;
+    --border: #2A2926;
+    --border-strong: #403E3A;
+    --text-muted: #A6A29A;
+    --text: #E4E2DC;
+    --ink: #FAFAF7;
+
+    --brand: #F5B731;
+    --brand-hover: #E8A317;
+    --brand-soft: #3A2C0F;
+    --secondary: #3DB5C7;
+    --secondary-soft: #0F3338;
+
+    --success: #5BB36A;
+    --success-soft: #16331C;
+    --warning: #E89A2E;
+    --warning-soft: #3A2710;
+    --error: #E66B66;
+    --error-soft: #3A1817;
+    --info: #5B9BD8;
+    --info-soft: #122A44;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'IBM Plex Sans', system-ui, sans-serif;
+    font-feature-settings: 'ss03';
+    font-size: 14px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  .mono { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-feature-settings: 'tnum', 'zero', 'cv01'; }
+  .tabular { font-variant-numeric: tabular-nums; }
+
+  /* Layout */
+  .topbar {
+    position: sticky; top: 0; z-index: 10;
+    background: var(--bg); border-bottom: var(--hair);
+    padding: var(--s-3) var(--s-6);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .topbar-brand { display: flex; align-items: center; gap: var(--s-3); }
+  .topbar-mark {
+    width: 24px; height: 24px;
+    background: var(--ink);
+    color: var(--bg);
+    display: grid; place-items: center;
+    font-family: 'IBM Plex Mono', monospace; font-weight: 600;
+    font-size: 12px;
+    border-radius: var(--r-xs);
+  }
+  .topbar-title { font-weight: 600; letter-spacing: -0.01em; }
+  .topbar-meta { color: var(--text-muted); font-family: 'IBM Plex Mono', monospace; font-size: 12px; }
+
+  .container { max-width: 1200px; margin: 0 auto; padding: var(--s-12) var(--s-6); }
+  .section { margin-bottom: var(--s-16); }
+  .section-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px; font-weight: 500;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin-bottom: var(--s-4);
+  }
+  .section h2 {
+    font-size: 28px; font-weight: 600;
+    letter-spacing: -0.02em;
+    margin-bottom: var(--s-2);
+    color: var(--ink);
+  }
+  .section .lede { color: var(--text-muted); margin-bottom: var(--s-8); max-width: 60ch; }
+
+  /* Typography specimen */
+  .specimen { border: var(--hair); border-radius: var(--r-md); background: var(--raised); }
+  .specimen-row {
+    display: grid; grid-template-columns: 140px 1fr auto;
+    align-items: baseline;
+    padding: var(--s-5) var(--s-6);
+    border-bottom: var(--hair);
+    gap: var(--s-6);
+  }
+  .specimen-row:last-child { border-bottom: none; }
+  .specimen-label { color: var(--text-muted); font-size: 12px; font-family: 'IBM Plex Mono', monospace; }
+  .specimen-meta { color: var(--text-muted); font-family: 'IBM Plex Mono', monospace; font-size: 11px; }
+
+  .t-display { font-size: 40px; font-weight: 600; letter-spacing: -0.025em; line-height: 1.1; color: var(--ink); }
+  .t-h1 { font-size: 28px; font-weight: 600; letter-spacing: -0.02em; }
+  .t-h2 { font-size: 20px; font-weight: 600; letter-spacing: -0.015em; }
+  .t-body { font-size: 14px; }
+  .t-small { font-size: 12px; color: var(--text-muted); }
+  .t-data { font-family: 'IBM Plex Mono', monospace; font-size: 14px; font-variant-numeric: tabular-nums; }
+
+  /* Color palette */
+  .swatch-grid {
+    display: grid;
+    grid-template-columns: repeat(11, 1fr);
+    gap: 0;
+    border: var(--hair);
+    border-radius: var(--r-md);
+    overflow: hidden;
+    margin-bottom: var(--s-3);
+  }
+  .swatch { aspect-ratio: 1 / 1.2; padding: var(--s-3); display: flex; flex-direction: column; justify-content: space-between; }
+  .swatch-step { font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 600; }
+  .swatch-hex { font-family: 'IBM Plex Mono', monospace; font-size: 9px; opacity: 0.8; }
+  .swatch.dark-text { color: var(--ink); }
+  .swatch.light-text { color: var(--bg); }
+
+  .palette-name { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: var(--s-2); margin-top: var(--s-5); }
+
+  .accent-row { display: grid; grid-template-columns: repeat(6, 1fr); gap: var(--s-3); }
+  .accent-card { border: var(--hair); border-radius: var(--r-md); background: var(--raised); overflow: hidden; }
+  .accent-bar { height: 56px; }
+  .accent-body { padding: var(--s-3); }
+  .accent-label { font-size: 11px; color: var(--text-muted); font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 0.05em; }
+  .accent-hex { font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 500; }
+
+  /* Components */
+  .components-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--s-6); }
+  .comp-card { border: var(--hair); border-radius: var(--r-md); background: var(--raised); padding: var(--s-6); }
+  .comp-title { font-size: 12px; font-family: 'IBM Plex Mono', monospace; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: var(--s-4); }
+  .comp-row { display: flex; gap: var(--s-2); align-items: center; flex-wrap: wrap; margin-bottom: var(--s-3); }
+  .comp-row:last-child { margin-bottom: 0; }
+
+  .btn {
+    font-family: inherit; font-weight: 500; font-size: 13px;
+    padding: 0 var(--s-3); height: 32px;
+    border-radius: var(--r-sm);
+    border: 1px solid transparent;
+    cursor: pointer;
+    display: inline-flex; align-items: center; gap: var(--s-2);
+    line-height: 1;
+    transition: background 80ms ease, border-color 80ms ease;
+  }
+  .btn-primary { background: var(--brand); color: #0E0D0C; }
+  .btn-primary:hover { background: var(--brand-hover); }
+  .btn-secondary { background: var(--raised); color: var(--text); border-color: var(--border-strong); }
+  .btn-secondary:hover { background: var(--surface); }
+  .btn-ghost { background: transparent; color: var(--text); }
+  .btn-ghost:hover { background: var(--surface); }
+  .btn-danger { background: var(--error); color: #fff; }
+  .btn-sm { height: 24px; font-size: 12px; padding: 0 var(--s-2); }
+  .btn-lg { height: 40px; padding: 0 var(--s-4); font-size: 14px; }
+
+  .input {
+    font-family: inherit; font-size: 13px;
+    background: var(--raised);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--r-sm);
+    height: 32px; padding: 0 var(--s-3);
+    color: var(--text);
+    width: 100%;
+  }
+  .input:focus { outline: 2px solid var(--brand); outline-offset: -1px; border-color: var(--brand); }
+  .label { font-size: 12px; color: var(--text-muted); margin-bottom: var(--s-1); display: block; font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 0.05em; }
+
+  .badge {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    padding: 2px 6px; border-radius: var(--r-xs);
+    border: 1px solid;
+  }
+  .badge-success { background: var(--success-soft); color: var(--success); border-color: var(--success); }
+  .badge-warning { background: var(--warning-soft); color: var(--warning); border-color: var(--warning); }
+  .badge-error   { background: var(--error-soft); color: var(--error); border-color: var(--error); }
+  .badge-info    { background: var(--info-soft); color: var(--info); border-color: var(--info); }
+  .badge-neutral { background: var(--surface); color: var(--text-muted); border-color: var(--border); }
+
+  .alert {
+    border: 1px solid; border-radius: var(--r-sm);
+    padding: var(--s-3) var(--s-4);
+    margin-bottom: var(--s-2);
+    font-size: 13px;
+    display: flex; gap: var(--s-3); align-items: flex-start;
+  }
+  .alert-icon { font-family: 'IBM Plex Mono', monospace; font-weight: 700; font-size: 12px; padding-top: 1px; }
+  .alert-success { background: var(--success-soft); border-color: var(--success); color: var(--success); }
+  .alert-warning { background: var(--warning-soft); border-color: var(--warning); color: var(--warning); }
+  .alert-error   { background: var(--error-soft); border-color: var(--error); color: var(--error); }
+  .alert-info    { background: var(--info-soft); border-color: var(--info); color: var(--info); }
+
+  /* Admin Dashboard Mock */
+  .dash {
+    border: var(--hair-strong); border-radius: var(--r-md);
+    background: var(--bg);
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    min-height: 600px;
+  }
+  .dash-sidebar { background: var(--surface); border-right: var(--hair); padding: var(--s-4) 0; }
+  .dash-brand { padding: 0 var(--s-4) var(--s-5); border-bottom: var(--hair); margin-bottom: var(--s-3); display: flex; align-items: center; gap: var(--s-2); }
+  .dash-brand .topbar-mark { width: 20px; height: 20px; font-size: 11px; }
+  .dash-brand-name { font-weight: 600; font-size: 13px; }
+  .dash-nav-section { padding: var(--s-2) var(--s-4); font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-top: var(--s-3); }
+  .dash-nav-item {
+    padding: 6px var(--s-4); font-size: 13px;
+    color: var(--text); cursor: pointer;
+    border-left: 2px solid transparent;
+    display: flex; align-items: center; gap: var(--s-2);
+  }
+  .dash-nav-item:hover { background: var(--bg); }
+  .dash-nav-item.active { background: var(--bg); border-left-color: var(--brand); font-weight: 500; color: var(--ink); }
+  .dash-nav-item .mono { font-size: 11px; color: var(--text-muted); margin-left: auto; }
+
+  .dash-main { padding: var(--s-5) var(--s-6); display: flex; flex-direction: column; gap: var(--s-5); }
+  .dash-header { display: flex; align-items: center; justify-content: space-between; }
+  .dash-header h1 { font-size: 20px; font-weight: 600; letter-spacing: -0.015em; color: var(--ink); }
+  .dash-header-meta { display: flex; gap: var(--s-2); align-items: center; }
+
+  .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: var(--hair); border-radius: var(--r-sm); overflow: hidden; }
+  .kpi {
+    padding: var(--s-3) var(--s-4);
+    background: var(--raised);
+    border-right: var(--hair);
+    display: flex; flex-direction: column; gap: 2px;
+  }
+  .kpi:last-child { border-right: none; }
+  .kpi-label { font-size: 10px; font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); }
+  .kpi-value { font-family: 'IBM Plex Mono', monospace; font-size: 24px; font-weight: 600; font-variant-numeric: tabular-nums; color: var(--ink); letter-spacing: -0.02em; }
+  .kpi-delta { font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-variant-numeric: tabular-nums; }
+  .kpi-delta.up { color: var(--success); }
+  .kpi-delta.down { color: var(--error); }
+
+  .panel { border: var(--hair); border-radius: var(--r-sm); background: var(--raised); }
+  .panel-head { padding: var(--s-3) var(--s-4); border-bottom: var(--hair); display: flex; justify-content: space-between; align-items: center; }
+  .panel-title { font-size: 13px; font-weight: 600; color: var(--ink); }
+
+  .chart-area { padding: var(--s-4); height: 220px; position: relative; }
+  /* svg-sized to fill */
+  .chart-area svg { width: 100%; height: 100%; display: block; }
+
+  table.data { width: 100%; border-collapse: collapse; font-size: 13px; }
+  table.data th {
+    text-align: left;
+    font-family: 'IBM Plex Mono', monospace; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--text-muted); font-weight: 500;
+    padding: var(--s-2) var(--s-4);
+    border-bottom: var(--hair);
+    background: var(--surface);
+  }
+  table.data td {
+    padding: var(--s-3) var(--s-4);
+    border-bottom: var(--hair);
+    color: var(--text);
+  }
+  table.data tr:last-child td { border-bottom: none; }
+  table.data tr:hover td { background: var(--surface); }
+  table.data .num { font-family: 'IBM Plex Mono', monospace; font-variant-numeric: tabular-nums; text-align: right; }
+
+  /* Mobile mock */
+  .mobile-row { display: grid; grid-template-columns: 280px 280px 280px; gap: var(--s-6); }
+  .phone {
+    background: #0E0D0C; padding: 10px;
+    border-radius: 28px;
+    width: 280px;
+    box-shadow: 0 0 0 1px var(--border-strong);
+  }
+  .phone-screen {
+    background: var(--bg);
+    border-radius: 18px;
+    height: 560px;
+    overflow: hidden;
+    display: flex; flex-direction: column;
+    position: relative;
+  }
+  .phone-status {
+    height: 28px; padding: 8px var(--s-4) 0; display: flex; justify-content: space-between;
+    font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600; color: var(--ink);
+  }
+  .phone-header {
+    padding: var(--s-3) var(--s-4) var(--s-2);
+    display: flex; align-items: center; gap: var(--s-3); border-bottom: var(--hair);
+  }
+  .phone-title { font-size: 17px; font-weight: 600; letter-spacing: -0.02em; }
+  .phone-content { flex: 1; padding: var(--s-4); display: flex; flex-direction: column; gap: var(--s-3); overflow: hidden; }
+  .phone-tabbar {
+    border-top: var(--hair); background: var(--surface);
+    padding: var(--s-2) 0;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    text-align: center;
+  }
+  .phone-tab { font-size: 10px; color: var(--text-muted); font-family: 'IBM Plex Mono', monospace; }
+  .phone-tab.active { color: var(--brand); font-weight: 600; }
+  .phone-tab-icon { font-size: 16px; margin-bottom: 2px; display: block; }
+
+  .stat-card {
+    background: var(--raised); border: var(--hair); border-radius: var(--r-md);
+    padding: var(--s-3); display: flex; flex-direction: column; gap: 2px;
+  }
+  .list-item {
+    background: var(--raised); border: var(--hair); border-radius: var(--r-md);
+    padding: var(--s-3); display: flex; justify-content: space-between; align-items: center;
+  }
+  .list-meta { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--text-muted); }
+
+  .pill-btn {
+    background: var(--brand); color: #0E0D0C; font-weight: 600;
+    padding: var(--s-3); border-radius: var(--r-pill); border: 0; width: 100%;
+    font-size: 14px;
+  }
+
+  /* Toggle */
+  .toggle {
+    position: fixed; top: var(--s-3); right: var(--s-6);
+    z-index: 100;
+    background: var(--raised); border: var(--hair-strong);
+    border-radius: var(--r-sm);
+    padding: 4px;
+    display: flex; gap: 0;
+  }
+  .toggle button {
+    background: transparent; border: 0; cursor: pointer;
+    font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500;
+    color: var(--text-muted);
+    padding: 4px 10px; border-radius: var(--r-xs);
+    text-transform: uppercase; letter-spacing: 0.08em;
+  }
+  .toggle button.active { background: var(--ink); color: var(--bg); }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-6); }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-3); }
+
+  .anti-slop { background: var(--surface); border: var(--hair); border-radius: var(--r-md); padding: var(--s-6); }
+  .anti-slop h3 { font-size: 14px; margin-bottom: var(--s-3); color: var(--ink); }
+  .anti-slop ul { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-2) var(--s-6); }
+  .anti-slop li { font-size: 13px; color: var(--text); display: flex; gap: var(--s-2); }
+  .anti-slop li::before { content: '✕'; color: var(--error); font-family: 'IBM Plex Mono', monospace; font-weight: 700; }
+
+  hr { border: 0; border-top: var(--hair); margin: var(--s-16) 0; }
+</style>
+</head>
+<body>
+
+<div class="toggle">
+  <button id="t-light" class="active" onclick="setTheme('light')">LIGHT</button>
+  <button id="t-dark" onclick="setTheme('dark')">DARK</button>
+</div>
+
+<div class="topbar">
+  <div class="topbar-brand">
+    <div class="topbar-mark">SD</div>
+    <div class="topbar-title">System Design</div>
+    <span class="badge badge-neutral">v0.1</span>
+  </div>
+  <div class="topbar-meta tabular">design-preview.html · 2026-05-16</div>
+</div>
+
+<div class="container">
+
+  <div class="section">
+    <div class="section-label">01 — Thesis</div>
+    <h2>Pro tool feel. Serious work, serious software.</h2>
+    <p class="lede">
+      Functional-dense aesthetic. IBM Plex Sans engineered for product UI. IBM Plex Mono for every number.
+      Warm graphite neutrals because cold slate signals AI dashboard. Signal amber because every dashboard
+      is blue. Cards have hairlines, not shadows. Numbers are tabular. Whitespace is intentional, not generous.
+    </p>
+  </div>
+
+  <div class="section">
+    <div class="section-label">02 — Typography</div>
+    <h2>One sans, one mono.</h2>
+    <p class="lede">IBM Plex Sans for everything UI — IBM's product design language, engineered for data-heavy enterprise tools. Stylistic set <span class="mono">ss03</span> for slashed zero in numerics. IBM Plex Mono with tabular figures for every number, every code block, every metadata label. Both designed as a system: identical metrics, mixed-typography never fights.</p>
+
+    <div class="specimen">
+      <div class="specimen-row">
+        <span class="specimen-label">display</span>
+        <span class="t-display">Active users 12,483</span>
+        <span class="specimen-meta">Plex Sans 600 · 40 / -2.5%</span>
+      </div>
+      <div class="specimen-row">
+        <span class="specimen-label">h1</span>
+        <span class="t-h1">Revenue overview</span>
+        <span class="specimen-meta">Plex Sans 600 · 28 / -2%</span>
+      </div>
+      <div class="specimen-row">
+        <span class="specimen-label">h2</span>
+        <span class="t-h2">Last 30 days</span>
+        <span class="specimen-meta">Plex Sans 600 · 20 / -1.5%</span>
+      </div>
+      <div class="specimen-row">
+        <span class="specimen-label">body</span>
+        <span class="t-body">Operators land on what matters. Numbers right-aligned, units never bold, deltas color-coded but never large. The chrome retreats so the data leads.</span>
+        <span class="specimen-meta">Plex Sans 400 · 14</span>
+      </div>
+      <div class="specimen-row">
+        <span class="specimen-label">small / meta</span>
+        <span class="t-small">Updated 14:32 UTC · 0.034s query · cached</span>
+        <span class="specimen-meta">Plex Sans 400 · 12</span>
+      </div>
+      <div class="specimen-row">
+        <span class="specimen-label">data / tabular</span>
+        <span class="t-data tabular">$48,234.12   +12.4%   ↑   0.034s</span>
+        <span class="specimen-meta">Plex Mono 500 · 14 · tnum</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">03 — Color</div>
+    <h2>Warm graphite + signal amber.</h2>
+    <p class="lede">Eleven-step neutral, slight yellow undertone — paper, not concrete. Amber primary because instrument panels are amber. Cyan-ink secondary for selected state only. Semantic colors WCAG AA against neutral 50 and neutral 900.</p>
+
+    <div class="palette-name">Neutrals · warm graphite</div>
+    <div class="swatch-grid" id="neutrals"></div>
+
+    <div class="palette-name">Brand & accent</div>
+    <div class="accent-row">
+      <div class="accent-card"><div class="accent-bar" style="background:#E8A317"></div><div class="accent-body"><div class="accent-label">Brand</div><div class="accent-hex">#E8A317</div></div></div>
+      <div class="accent-card"><div class="accent-bar" style="background:#0F7B8A"></div><div class="accent-body"><div class="accent-label">Secondary</div><div class="accent-hex">#0F7B8A</div></div></div>
+      <div class="accent-card"><div class="accent-bar" style="background:#2F7D3C"></div><div class="accent-body"><div class="accent-label">Success</div><div class="accent-hex">#2F7D3C</div></div></div>
+      <div class="accent-card"><div class="accent-bar" style="background:#C2700A"></div><div class="accent-body"><div class="accent-label">Warning</div><div class="accent-hex">#C2700A</div></div></div>
+      <div class="accent-card"><div class="accent-bar" style="background:#B5302B"></div><div class="accent-body"><div class="accent-label">Error</div><div class="accent-hex">#B5302B</div></div></div>
+      <div class="accent-card"><div class="accent-bar" style="background:#2563A8"></div><div class="accent-body"><div class="accent-label">Info</div><div class="accent-hex">#2563A8</div></div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">04 — Components</div>
+    <h2>Restrained primitives.</h2>
+    <p class="lede">4px base unit. 4–8px radius scale. 1px hairlines. No drop shadows on data UI. Buttons 32px default, 24px small, 40px large. Focus ring is 2px amber outline, not glow.</p>
+
+    <div class="components-grid">
+
+      <div class="comp-card">
+        <div class="comp-title">Buttons</div>
+        <div class="comp-row">
+          <button class="btn btn-primary">Run query</button>
+          <button class="btn btn-secondary">Cancel</button>
+          <button class="btn btn-ghost">Discard</button>
+          <button class="btn btn-danger">Delete</button>
+        </div>
+        <div class="comp-row">
+          <button class="btn btn-primary btn-sm">Apply</button>
+          <button class="btn btn-secondary btn-sm">Reset</button>
+          <button class="btn btn-primary btn-lg">Continue</button>
+        </div>
+      </div>
+
+      <div class="comp-card">
+        <div class="comp-title">Form input</div>
+        <label class="label">Customer ID</label>
+        <input class="input mono" placeholder="cus_NhX2K8aQp4" />
+        <div style="height:12px"></div>
+        <label class="label">Email</label>
+        <input class="input" type="email" placeholder="user@example.com" />
+      </div>
+
+      <div class="comp-card">
+        <div class="comp-title">Status badges</div>
+        <div class="comp-row">
+          <span class="badge badge-success">Active</span>
+          <span class="badge badge-warning">Pending</span>
+          <span class="badge badge-error">Failed</span>
+          <span class="badge badge-info">Indexing</span>
+          <span class="badge badge-neutral">Archived</span>
+        </div>
+        <div class="comp-row" style="margin-top:8px">
+          <span class="badge badge-success">200 OK</span>
+          <span class="badge badge-warning">429 Throttled</span>
+          <span class="badge badge-error">500 Error</span>
+        </div>
+      </div>
+
+      <div class="comp-card">
+        <div class="comp-title">Alerts</div>
+        <div class="alert alert-success"><span class="alert-icon">✓</span><div><strong>Deploy complete.</strong> Build #2847 promoted to production.</div></div>
+        <div class="alert alert-warning"><span class="alert-icon">!</span><div><strong>Rate limit nearing.</strong> 8,932 / 10,000 requests this hour.</div></div>
+        <div class="alert alert-error"><span class="alert-icon">✕</span><div><strong>Query failed.</strong> Table <span class="mono">events_2026_q1</span> not found.</div></div>
+        <div class="alert alert-info"><span class="alert-icon">i</span><div><strong>Indexing in progress.</strong> 12,483 / 48,200 rows scanned.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <hr/>
+
+  <div class="section">
+    <div class="section-label">05 — Web admin</div>
+    <h2>Real screen. Real numbers.</h2>
+    <p class="lede">Sample dashboard built from these tokens. shadcn/ui + Tailwind in production. Charts route by complexity: MUI for simple, ECharts for interactive, D3 for bespoke, Chart.js for prototypes. Demo chart below uses raw SVG to prove the visual language.</p>
+
+    <div class="dash">
+      <aside class="dash-sidebar">
+        <div class="dash-brand">
+          <div class="topbar-mark">SD</div>
+          <div class="dash-brand-name">acme.ops</div>
+        </div>
+        <div class="dash-nav-section">Workspace</div>
+        <div class="dash-nav-item active">Overview <span class="mono">⌘1</span></div>
+        <div class="dash-nav-item">Customers <span class="mono">⌘2</span></div>
+        <div class="dash-nav-item">Events <span class="mono">⌘3</span></div>
+        <div class="dash-nav-item">Billing <span class="mono">⌘4</span></div>
+        <div class="dash-nav-section">Tools</div>
+        <div class="dash-nav-item">Query editor</div>
+        <div class="dash-nav-item">Webhooks</div>
+        <div class="dash-nav-item">API logs</div>
+        <div class="dash-nav-section">Settings</div>
+        <div class="dash-nav-item">Members</div>
+        <div class="dash-nav-item">Keys</div>
+      </aside>
+
+      <main class="dash-main">
+        <div class="dash-header">
+          <h1>Overview</h1>
+          <div class="dash-header-meta">
+            <span class="badge badge-neutral">Last 30d</span>
+            <button class="btn btn-secondary btn-sm">Filter</button>
+            <button class="btn btn-primary btn-sm">Export</button>
+          </div>
+        </div>
+
+        <div class="kpi-grid">
+          <div class="kpi">
+            <div class="kpi-label">Revenue</div>
+            <div class="kpi-value">$48,234.12</div>
+            <div class="kpi-delta up">↑ 12.4% vs prev</div>
+          </div>
+          <div class="kpi">
+            <div class="kpi-label">Active users</div>
+            <div class="kpi-value">12,483</div>
+            <div class="kpi-delta up">↑ 3.2% vs prev</div>
+          </div>
+          <div class="kpi">
+            <div class="kpi-label">Churn</div>
+            <div class="kpi-value">0.034</div>
+            <div class="kpi-delta down">↓ 0.8% vs prev</div>
+          </div>
+          <div class="kpi">
+            <div class="kpi-label">P95 latency</div>
+            <div class="kpi-value">218 ms</div>
+            <div class="kpi-delta up">↑ 4 ms vs prev</div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head">
+            <div class="panel-title">Revenue · last 30 days</div>
+            <div style="display:flex;gap:8px">
+              <span class="badge badge-neutral">Daily</span>
+              <span class="badge badge-neutral">USD</span>
+            </div>
+          </div>
+          <div class="chart-area">
+            <svg viewBox="0 0 600 200" preserveAspectRatio="none" id="demo-chart"></svg>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head">
+            <div class="panel-title">Recent events</div>
+            <span class="badge badge-info">live</span>
+          </div>
+          <table class="data">
+            <thead>
+              <tr>
+                <th>Time</th>
+                <th>Event</th>
+                <th>Customer</th>
+                <th>Status</th>
+                <th class="num">Amount</th>
+                <th class="num">Latency</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="mono">14:32:08</td>
+                <td>charge.succeeded</td>
+                <td class="mono">cus_NhX2K8aQp4</td>
+                <td><span class="badge badge-success">200</span></td>
+                <td class="num">$248.00</td>
+                <td class="num">142 ms</td>
+              </tr>
+              <tr>
+                <td class="mono">14:31:55</td>
+                <td>invoice.created</td>
+                <td class="mono">cus_LbA9R2vP1q</td>
+                <td><span class="badge badge-success">200</span></td>
+                <td class="num">$1,899.00</td>
+                <td class="num">218 ms</td>
+              </tr>
+              <tr>
+                <td class="mono">14:31:40</td>
+                <td>webhook.retry</td>
+                <td class="mono">cus_KdM7T3sZ8c</td>
+                <td><span class="badge badge-warning">429</span></td>
+                <td class="num">—</td>
+                <td class="num">3,041 ms</td>
+              </tr>
+              <tr>
+                <td class="mono">14:30:18</td>
+                <td>refund.created</td>
+                <td class="mono">cus_PqR5W8nL4j</td>
+                <td><span class="badge badge-success">200</span></td>
+                <td class="num">-$48.00</td>
+                <td class="num">198 ms</td>
+              </tr>
+              <tr>
+                <td class="mono">14:29:52</td>
+                <td>subscription.deleted</td>
+                <td class="mono">cus_VnT6Y4mB2x</td>
+                <td><span class="badge badge-error">500</span></td>
+                <td class="num">—</td>
+                <td class="num">812 ms</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <hr/>
+
+  <div class="section">
+    <div class="section-label">06 — Mobile</div>
+    <h2>Material 3 scaffolding. Brand-first surface.</h2>
+    <p class="lede">NativeWind for styling. MD3 structure stays — touch targets, motion specs, accessibility — but tokens swap to brand. Mobile gets pill CTAs and softer 8px radii because thumbs aren't keyboards. Tabular numbers preserved.</p>
+
+    <div class="mobile-row">
+      <div class="phone"><div class="phone-screen">
+        <div class="phone-status"><span>9:41</span><span>●●●○ 5G</span></div>
+        <div class="phone-header">
+          <div class="topbar-mark" style="width:28px;height:28px;font-size:13px">SD</div>
+          <div class="phone-title">Today</div>
+        </div>
+        <div class="phone-content">
+          <div class="grid-2" style="gap:8px">
+            <div class="stat-card">
+              <div class="kpi-label">Revenue</div>
+              <div class="kpi-value" style="font-size:18px">$48,234</div>
+              <div class="kpi-delta up">↑ 12.4%</div>
+            </div>
+            <div class="stat-card">
+              <div class="kpi-label">Users</div>
+              <div class="kpi-value" style="font-size:18px">12,483</div>
+              <div class="kpi-delta up">↑ 3.2%</div>
+            </div>
+          </div>
+          <div class="list-item">
+            <div>
+              <div style="font-weight:500">charge.succeeded</div>
+              <div class="list-meta">cus_NhX2K8aQp4 · 14:32</div>
+            </div>
+            <div style="text-align:right">
+              <div class="mono tabular" style="font-weight:600">$248.00</div>
+              <span class="badge badge-success">200</span>
+            </div>
+          </div>
+          <div class="list-item">
+            <div>
+              <div style="font-weight:500">webhook.retry</div>
+              <div class="list-meta">cus_KdM7T3sZ8c · 14:31</div>
+            </div>
+            <div style="text-align:right">
+              <div class="mono tabular" style="color:var(--text-muted)">—</div>
+              <span class="badge badge-warning">429</span>
+            </div>
+          </div>
+          <div style="margin-top:auto">
+            <button class="pill-btn">View all events</button>
+          </div>
+        </div>
+        <div class="phone-tabbar">
+          <div class="phone-tab active"><span class="phone-tab-icon">●</span>Today</div>
+          <div class="phone-tab"><span class="phone-tab-icon">▤</span>Events</div>
+          <div class="phone-tab"><span class="phone-tab-icon">◐</span>Charts</div>
+          <div class="phone-tab"><span class="phone-tab-icon">⚙</span>Settings</div>
+        </div>
+      </div></div>
+
+      <div class="phone"><div class="phone-screen">
+        <div class="phone-status"><span>9:41</span><span>●●●○ 5G</span></div>
+        <div class="phone-header">
+          <div class="phone-title" style="font-size:14px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.08em">← back</div>
+          <div class="phone-title">Customer</div>
+        </div>
+        <div class="phone-content">
+          <div>
+            <div class="kpi-label">cus_NhX2K8aQp4</div>
+            <div style="font-size:22px;font-weight:600;letter-spacing:-.02em;margin-top:2px">Acme Industries</div>
+            <div class="list-meta" style="margin-top:4px">Joined 2025-04-12 · MRR $1,899</div>
+          </div>
+          <div class="grid-3">
+            <div class="stat-card"><div class="kpi-label">LTV</div><div class="kpi-value" style="font-size:14px">$24.8k</div></div>
+            <div class="stat-card"><div class="kpi-label">Events</div><div class="kpi-value" style="font-size:14px">8,432</div></div>
+            <div class="stat-card"><div class="kpi-label">Score</div><div class="kpi-value" style="font-size:14px;color:var(--success)">A+</div></div>
+          </div>
+          <div class="panel" style="overflow:hidden">
+            <div class="panel-head"><div class="panel-title">Activity</div></div>
+            <div style="padding:8px 12px;border-bottom:var(--hair);font-size:12px;display:flex;justify-content:space-between"><span>charge.succeeded</span><span class="mono tabular">$248</span></div>
+            <div style="padding:8px 12px;border-bottom:var(--hair);font-size:12px;display:flex;justify-content:space-between"><span>invoice.created</span><span class="mono tabular">$1,899</span></div>
+            <div style="padding:8px 12px;font-size:12px;display:flex;justify-content:space-between"><span>subscription.updated</span><span class="mono tabular">—</span></div>
+          </div>
+          <div style="margin-top:auto;display:flex;gap:8px">
+            <button class="btn btn-secondary" style="flex:1;height:44px">Message</button>
+            <button class="btn btn-primary" style="flex:1;height:44px">View invoice</button>
+          </div>
+        </div>
+        <div class="phone-tabbar">
+          <div class="phone-tab"><span class="phone-tab-icon">●</span>Today</div>
+          <div class="phone-tab"><span class="phone-tab-icon">▤</span>Events</div>
+          <div class="phone-tab"><span class="phone-tab-icon">◐</span>Charts</div>
+          <div class="phone-tab"><span class="phone-tab-icon">⚙</span>Settings</div>
+        </div>
+      </div></div>
+
+      <div class="phone"><div class="phone-screen">
+        <div class="phone-status"><span>9:41</span><span>●●●○ 5G</span></div>
+        <div class="phone-header">
+          <div class="phone-title">Sign in</div>
+        </div>
+        <div class="phone-content" style="justify-content:center;gap:16px">
+          <div class="topbar-mark" style="width:48px;height:48px;font-size:20px;align-self:center;margin-bottom:8px">SD</div>
+          <div style="text-align:center">
+            <div style="font-size:20px;font-weight:600;letter-spacing:-.02em">Welcome back</div>
+            <div class="list-meta" style="margin-top:4px">Sign in to acme.ops</div>
+          </div>
+          <div>
+            <label class="label">Email</label>
+            <input class="input" placeholder="you@acme.com" />
+          </div>
+          <div>
+            <label class="label">Password</label>
+            <input class="input" type="password" placeholder="••••••••" />
+          </div>
+          <button class="pill-btn">Continue</button>
+          <button class="btn btn-secondary" style="height:44px;border-radius:var(--r-pill)">Continue with passkey</button>
+          <div style="text-align:center;font-size:12px;color:var(--text-muted);margin-top:auto">By signing in you accept the <span style="text-decoration:underline">Terms</span></div>
+        </div>
+      </div></div>
+    </div>
+  </div>
+
+  <hr/>
+
+  <div class="section">
+    <div class="section-label">07 — Guardrails</div>
+    <h2>What this system refuses to do.</h2>
+    <div class="anti-slop">
+      <ul>
+        <li>No gradients on buttons, backgrounds, or charts</li>
+        <li>No glassmorphism / backdrop-blur cards</li>
+        <li>No purple-to-pink anything</li>
+        <li>No emoji in UI chrome (Lucide icons only)</li>
+        <li>No shimmer / pulsing "AI" loading states</li>
+        <li>No drop shadows on data panels</li>
+        <li>No centered layouts in admin</li>
+        <li>No pill buttons in admin (mobile CTAs only)</li>
+        <li>No oversized hero numbers (KPI caps at 32px)</li>
+        <li>No system-ui as primary display font</li>
+        <li>No rainbow categorical ramp on charts</li>
+        <li>No "Built for X" marketing-copy patterns</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  // Build neutrals scale
+  const steps = [
+    ['50','#FAFAF7','dark'],['100','#F1F0EC','dark'],['200','#E4E2DC','dark'],
+    ['300','#CDCAC2','dark'],['400','#A6A29A','dark'],['500','#7C7872','light'],
+    ['600','#5B5853','light'],['700','#403E3A','light'],['800','#2A2926','light'],
+    ['900','#1A1917','light'],['950','#0E0D0C','light']
+  ];
+  const grid = document.getElementById('neutrals');
+  grid.innerHTML = steps.map(([s,h,t]) => `
+    <div class="swatch ${t}-text" style="background:${h}">
+      <div class="swatch-step">${s}</div>
+      <div class="swatch-hex">${h}</div>
+    </div>
+  `).join('');
+
+  // Toggle
+  function setTheme(t) {
+    document.documentElement.dataset.theme = t;
+    document.getElementById('t-light').classList.toggle('active', t==='light');
+    document.getElementById('t-dark').classList.toggle('active', t==='dark');
+  }
+
+  // Demo chart — area + line, tokens-only
+  const svg = document.getElementById('demo-chart');
+  const data = [12,18,15,22,28,24,32,38,34,42,48,44,52,58,55,62,68,64,72,78,74,82,88,84,92,98,94,102,108,104];
+  const max = Math.max(...data) * 1.1;
+  const W=600, H=200, pad=10;
+  const cs = getComputedStyle(document.documentElement);
+  const brand = cs.getPropertyValue('--brand').trim();
+  const brandSoft = cs.getPropertyValue('--brand-soft').trim();
+  const border = cs.getPropertyValue('--border').trim();
+  const muted = cs.getPropertyValue('--text-muted').trim();
+  function build() {
+    const cs = getComputedStyle(document.documentElement);
+    const brand = cs.getPropertyValue('--brand').trim();
+    const brandSoft = cs.getPropertyValue('--brand-soft').trim();
+    const border = cs.getPropertyValue('--border').trim();
+    const muted = cs.getPropertyValue('--text-muted').trim();
+    const pts = data.map((d,i)=>[pad + (i/(data.length-1))*(W-pad*2), H-pad - (d/max)*(H-pad*2)]);
+    const line = pts.map((p,i)=>(i?'L':'M')+p[0].toFixed(1)+' '+p[1].toFixed(1)).join(' ');
+    const area = line + ` L${(W-pad).toFixed(1)} ${(H-pad).toFixed(1)} L${pad} ${(H-pad).toFixed(1)} Z`;
+    const gridLines = [0.25,0.5,0.75,1].map(f=>{
+      const y = pad + f*(H-pad*2);
+      return `<line x1="${pad}" x2="${W-pad}" y1="${y}" y2="${y}" stroke="${border}" stroke-width="1" stroke-dasharray="2 4"/>`;
+    }).join('');
+    const labels = ['1','7','14','21','30'].map((l,i)=>{
+      const x = pad + (i/4)*(W-pad*2);
+      return `<text x="${x}" y="${H-2}" fill="${muted}" font-size="9" font-family="IBM Plex Mono" text-anchor="${i===0?'start':i===4?'end':'middle'}">${l}</text>`;
+    }).join('');
+    svg.innerHTML = `
+      ${gridLines}
+      <path d="${area}" fill="${brandSoft}" />
+      <path d="${line}" fill="none" stroke="${brand}" stroke-width="1.5"/>
+      ${pts.map(p=>`<circle cx="${p[0].toFixed(1)}" cy="${p[1].toFixed(1)}" r="1.5" fill="${brand}"/>`).join('')}
+      ${labels}
+    `;
+  }
+  build();
+  // rebuild on theme change so chart colors follow
+  new MutationObserver(build).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+</script>
+</body>
+</html>
