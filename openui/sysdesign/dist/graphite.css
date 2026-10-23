@@ -1,0 +1,1097 @@
+/* Graphite — generated from tokens.json and components/bundle.css by scripts/build-css.mjs. Do not edit. */
+@font-face {
+  font-family: "Inter";
+  src: local("Inter Variable"), local("Inter"), url("fonts/InterVariable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --openui-background: oklch(0.97 0 89.876 / 1);
+  --openui-foreground: oklch(0.994 0 89.876 / 1);
+  --openui-popover-background: oklch(0.994 0 89.876 / 1);
+  --openui-sunk-light: oklch(0.097 0 0 / 0.02);
+  --openui-sunk: oklch(0.097 0 0 / 0.04);
+  --openui-sunk-deep: oklch(0.097 0 0 / 0.08);
+  --openui-elevated-light: oklch(0.097 0 0 / 0.04);
+  --openui-elevated: oklch(0.097 0 0 / 0.08);
+  --openui-elevated-strong: oklch(0.097 0 0 / 0.16);
+  --openui-elevated-intense: oklch(0.097 0 0 / 0.32);
+  --openui-overlay: oklch(0 0 0 / 0.4);
+  --openui-highlight-subtle: oklch(0.097 0 0 / 0.02);
+  --openui-highlight: oklch(0.097 0 0 / 0.04);
+  --openui-highlight-strong: oklch(0.097 0 0 / 0.08);
+  --openui-highlight-intense: oklch(0.097 0 0 / 0.32);
+  --openui-inverted-background: oklch(0.097 0 0 / 1);
+  --openui-info-background: oklch(0.623 0.188 259.815 / 0.12);
+  --openui-success-background: oklch(0.627 0.17 149.214 / 0.12);
+  --openui-alert-background: oklch(0.795 0.162 86.047 / 0.16);
+  --openui-danger-background: oklch(0.577 0.215 27.325 / 0.12);
+  --openui-purple-background: oklch(0.627 0.233 303.9 / 0.12);
+  --openui-pink-background: oklch(0.592 0.218 0.584 / 0.12);
+  --openui-chat-user-response-bg: oklch(0.097 0 0 / 0.08);
+  --openui-chat-user-response-text: oklch(0.097 0 0 / 1);
+  --openui-text-neutral-primary: oklch(0.097 0 0 / 1);
+  --openui-text-neutral-secondary: oklch(0.097 0 0 / 0.6);
+  --openui-text-neutral-tertiary: oklch(0.097 0 0 / 0.2);
+  --openui-text-neutral-link: oklch(0.097 0 0 / 1);
+  --openui-text-brand: oklch(0.546 0.215 262.881 / 1);
+  --openui-text-white: oklch(1 0 89.876 / 1);
+  --openui-text-black: oklch(0 0 0 / 1);
+  --openui-text-accent-primary: oklch(0.994 0 89.876 / 1);
+  --openui-text-accent-secondary: oklch(0.994 0 89.876 / 0.5);
+  --openui-text-accent-tertiary: oklch(0.994 0 89.876 / 0.2);
+  --openui-text-success-primary: oklch(0.448 0.108 151.328 / 1);
+  --openui-text-success-inverted: oklch(0.962 0.043 156.743 / 1);
+  --openui-text-alert-primary: oklch(0.476 0.103 61.907 / 1);
+  --openui-text-alert-inverted: oklch(0.973 0.069 103.193 / 1);
+  --openui-text-danger-primary: oklch(0.505 0.19 27.518 / 1);
+  --openui-text-danger-secondary: oklch(0.711 0.166 22.216 / 1);
+  --openui-text-danger-tertiary: oklch(0.808 0.103 19.571 / 1);
+  --openui-text-danger-inverted-primary: oklch(0.982 0.009 17.303 / 1);
+  --openui-text-danger-inverted-secondary: oklch(0.982 0.009 17.303 / 0.5);
+  --openui-text-danger-inverted-tertiary: oklch(0.982 0.009 17.303 / 0.3);
+  --openui-text-info-primary: oklch(0.424 0.181 265.638 / 1);
+  --openui-text-info-inverted: oklch(0.932 0.032 255.585 / 1);
+  --openui-text-pink-primary: oklch(0.459 0.17 3.815 / 1);
+  --openui-text-pink-inverted: oklch(0.948 0.028 342.258 / 1);
+  --openui-text-purple-primary: oklch(0.438 0.198 303.724 / 1);
+  --openui-text-purple-inverted: oklch(0.946 0.033 307.174 / 1);
+  --openui-interactive-accent-default: oklch(0.546 0.215 262.881 / 1);
+  --openui-interactive-accent-hover: oklch(0.546 0.215 262.881 / 0.8);
+  --openui-interactive-accent-disabled: oklch(0.546 0.215 262.881 / 0.4);
+  --openui-interactive-accent-pressed: oklch(0.546 0.215 262.881 / 1);
+  --openui-interactive-destructive-default: oklch(0.577 0.215 27.325 / 0.02);
+  --openui-interactive-destructive-hover: oklch(0.577 0.215 27.325 / 0.08);
+  --openui-interactive-destructive-disabled: oklch(0.577 0.215 27.325 / 0.02);
+  --openui-interactive-destructive-pressed: oklch(0.577 0.215 27.325 / 0.1);
+  --openui-interactive-destructive-accent-default: oklch(0.577 0.215 27.325 / 1);
+  --openui-interactive-destructive-accent-hover: oklch(0.637 0.208 25.331 / 1);
+  --openui-interactive-destructive-accent-pressed: oklch(0.505 0.19 27.518 / 1);
+  --openui-interactive-destructive-accent-disabled: oklch(0.577 0.215 27.325 / 0.4);
+  --openui-border-default: oklch(0.097 0 0 / 0.06);
+  --openui-border-interactive: oklch(0.097 0 0 / 0.12);
+  --openui-border-interactive-emphasis: oklch(0.097 0 0 / 0.3);
+  --openui-border-interactive-selected: oklch(0.097 0 0 / 1);
+  --openui-border-accent: oklch(0.546 0.215 262.881 / 0.08);
+  --openui-border-accent-emphasis: oklch(0.546 0.215 262.881 / 0.3);
+  --openui-border-info: oklch(0.623 0.188 259.815 / 0.08);
+  --openui-border-info-emphasis: oklch(0.546 0.215 262.881 / 1);
+  --openui-border-alert: oklch(0.861 0.173 91.936 / 0.08);
+  --openui-border-alert-emphasis: oklch(0.681 0.142 75.834 / 1);
+  --openui-border-success: oklch(0.627 0.17 149.214 / 0.08);
+  --openui-border-success-emphasis: oklch(0.627 0.17 149.214 / 1);
+  --openui-border-danger: oklch(0.577 0.215 27.325 / 0.08);
+  --openui-border-danger-emphasis: oklch(0.577 0.215 27.325 / 1);
+  --chart-ocean-1: #0d47a1;
+  --chart-ocean-2: #1565c0;
+  --chart-ocean-3: #1976d2;
+  --chart-ocean-4: #1e88e5;
+  --chart-ocean-5: #2196f3;
+  --chart-ocean-6: #42a5f5;
+  --chart-ocean-7: #64b5f6;
+  --chart-ocean-8: #90caf9;
+  --chart-ocean-9: #bbdefb;
+  --chart-ocean-10: #e3f2fd;
+  --chart-ocean-11: #eff8ff;
+  --openui-shadow-0: none;
+  --openui-shadow-s: 0 1px 3px -2px oklch(0 0 0 / 0.02), 0 2px 5px -2px oklch(0 0 0 / 0.04);
+  --openui-shadow-m: 0 4px 6px -2px oklch(0 0 0 / 0.025), 0 2px 2px -2px oklch(0 0 0 / 0.05);
+  --openui-shadow-l: 0 4px 4px -2px oklch(0 0 0 / 0.05), 0 4px 8px -2px oklch(0 0 0 / 0.04);
+  --openui-shadow-xl: 0 8px 16px -4px oklch(0 0 0 / 0.08), 0 16px 32px -6px oklch(0 0 0 / 0.12);
+  --openui-shadow-2xl: 0 12px 24px -6px oklch(0 0 0 / 0.12), 0 24px 48px -8px oklch(0 0 0 / 0.16);
+  --openui-shadow-3xl: 0 16px 32px -8px oklch(0 0 0 / 0.16), 0 32px 64px -12px oklch(0 0 0 / 0.22);
+  --openui-space-000: 0;
+  --openui-space-3xs: 2px;
+  --openui-space-2xs: 4px;
+  --openui-space-xs: 6px;
+  --openui-space-s: 8px;
+  --openui-space-s-m: 10px;
+  --openui-space-m: 12px;
+  --openui-space-m-l: 16px;
+  --openui-space-l: 18px;
+  --openui-space-xl: 24px;
+  --openui-space-2xl: 36px;
+  --openui-space-3xl: 48px;
+  --openui-radius-none: 0;
+  --openui-radius-3xs: 1px;
+  --openui-radius-2xs: 2px;
+  --openui-radius-xs: 4px;
+  --openui-radius-s: 6px;
+  --openui-radius-m: 8px;
+  --openui-radius-l: 10px;
+  --openui-radius-xl: 12px;
+  --openui-radius-2xl: 14px;
+  --openui-radius-3xl: 16px;
+  --openui-radius-4xl: 20px;
+  --openui-radius-5xl: 24px;
+  --openui-radius-6xl: 28px;
+  --openui-radius-7xl: 32px;
+  --openui-radius-8xl: 40px;
+  --openui-radius-9xl: 48px;
+  --openui-radius-full: 9999px;
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "SFMono-Regular", Menlo, Consolas, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --openui-background: oklch(0.145 0 0 / 1);
+    --openui-foreground: oklch(0.205 0 0 / 1);
+    --openui-popover-background: oklch(0.205 0 0 / 1);
+    --openui-sunk-light: oklch(0.994 0 89.876 / 0.02);
+    --openui-sunk: oklch(0.994 0 89.876 / 0.04);
+    --openui-sunk-deep: oklch(0.994 0 89.876 / 0.08);
+    --openui-elevated-light: oklch(0.994 0 89.876 / 0.04);
+    --openui-elevated: oklch(0.994 0 89.876 / 0.08);
+    --openui-elevated-strong: oklch(0.994 0 89.876 / 0.16);
+    --openui-elevated-intense: oklch(0.994 0 89.876 / 0.32);
+    --openui-overlay: oklch(0 0 0 / 0.6);
+    --openui-highlight-subtle: oklch(0.994 0 89.876 / 0.02);
+    --openui-highlight: oklch(0.994 0 89.876 / 0.04);
+    --openui-highlight-strong: oklch(0.994 0 89.876 / 0.08);
+    --openui-highlight-intense: oklch(0.994 0 89.876 / 0.3);
+    --openui-inverted-background: oklch(0.994 0 89.876 / 1);
+    --openui-chat-user-response-bg: oklch(0.994 0 89.876 / 0.08);
+    --openui-chat-user-response-text: oklch(0.985 0 89.876 / 1);
+    --openui-text-neutral-primary: oklch(0.985 0 89.876 / 1);
+    --openui-text-neutral-secondary: oklch(0.985 0 89.876 / 0.6);
+    --openui-text-neutral-tertiary: oklch(0.985 0 89.876 / 0.2);
+    --openui-text-neutral-link: oklch(0.985 0 89.876 / 1);
+    --openui-text-success-primary: oklch(0.871 0.136 154.449 / 1);
+    --openui-text-alert-primary: oklch(0.905 0.166 98.111 / 1);
+    --openui-text-danger-primary: oklch(0.808 0.103 19.571 / 1);
+    --openui-text-danger-secondary: oklch(0.885 0.059 18.334 / 1);
+    --openui-text-danger-tertiary: oklch(0.936 0.031 17.717 / 1);
+    --openui-text-info-primary: oklch(0.809 0.096 251.813 / 1);
+    --openui-text-pink-primary: oklch(0.823 0.11 346.018 / 1);
+    --openui-text-purple-primary: oklch(0.827 0.108 306.383 / 1);
+    --openui-border-default: oklch(0.994 0 89.876 / 0.06);
+    --openui-border-interactive: oklch(0.994 0 89.876 / 0.12);
+    --openui-border-interactive-emphasis: oklch(0.994 0 89.876 / 0.4);
+    --openui-border-interactive-selected: oklch(0.985 0 89.876 / 1);
+    --openui-border-accent: oklch(0.546 0.215 262.881 / 0.2);
+    --openui-border-accent-emphasis: oklch(0.546 0.215 262.881 / 0.4);
+    --openui-shadow-s: 0 1px 3px -2px oklch(0 0 0 / 0.06), 0 2px 5px -2px oklch(0 0 0 / 0.10);
+    --openui-shadow-m: 0 4px 6px -2px oklch(0 0 0 / 0.08), 0 2px 2px -2px oklch(0 0 0 / 0.12);
+    --openui-shadow-l: 0 4px 4px -2px oklch(0 0 0 / 0.12), 0 4px 8px -2px oklch(0 0 0 / 0.10);
+    --openui-shadow-xl: 0 8px 16px -4px oklch(0 0 0 / 0.16), 0 16px 32px -6px oklch(0 0 0 / 0.20);
+    --openui-shadow-2xl: 0 12px 24px -6px oklch(0 0 0 / 0.20), 0 24px 48px -8px oklch(0 0 0 / 0.24);
+    --openui-shadow-3xl: 0 16px 32px -8px oklch(0 0 0 / 0.24), 0 32px 64px -12px oklch(0 0 0 / 0.28);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --openui-background: oklch(0.145 0 0 / 1);
+  --openui-foreground: oklch(0.205 0 0 / 1);
+  --openui-popover-background: oklch(0.205 0 0 / 1);
+  --openui-sunk-light: oklch(0.994 0 89.876 / 0.02);
+  --openui-sunk: oklch(0.994 0 89.876 / 0.04);
+  --openui-sunk-deep: oklch(0.994 0 89.876 / 0.08);
+  --openui-elevated-light: oklch(0.994 0 89.876 / 0.04);
+  --openui-elevated: oklch(0.994 0 89.876 / 0.08);
+  --openui-elevated-strong: oklch(0.994 0 89.876 / 0.16);
+  --openui-elevated-intense: oklch(0.994 0 89.876 / 0.32);
+  --openui-overlay: oklch(0 0 0 / 0.6);
+  --openui-highlight-subtle: oklch(0.994 0 89.876 / 0.02);
+  --openui-highlight: oklch(0.994 0 89.876 / 0.04);
+  --openui-highlight-strong: oklch(0.994 0 89.876 / 0.08);
+  --openui-highlight-intense: oklch(0.994 0 89.876 / 0.3);
+  --openui-inverted-background: oklch(0.994 0 89.876 / 1);
+  --openui-chat-user-response-bg: oklch(0.994 0 89.876 / 0.08);
+  --openui-chat-user-response-text: oklch(0.985 0 89.876 / 1);
+  --openui-text-neutral-primary: oklch(0.985 0 89.876 / 1);
+  --openui-text-neutral-secondary: oklch(0.985 0 89.876 / 0.6);
+  --openui-text-neutral-tertiary: oklch(0.985 0 89.876 / 0.2);
+  --openui-text-neutral-link: oklch(0.985 0 89.876 / 1);
+  --openui-text-success-primary: oklch(0.871 0.136 154.449 / 1);
+  --openui-text-alert-primary: oklch(0.905 0.166 98.111 / 1);
+  --openui-text-danger-primary: oklch(0.808 0.103 19.571 / 1);
+  --openui-text-danger-secondary: oklch(0.885 0.059 18.334 / 1);
+  --openui-text-danger-tertiary: oklch(0.936 0.031 17.717 / 1);
+  --openui-text-info-primary: oklch(0.809 0.096 251.813 / 1);
+  --openui-text-pink-primary: oklch(0.823 0.11 346.018 / 1);
+  --openui-text-purple-primary: oklch(0.827 0.108 306.383 / 1);
+  --openui-border-default: oklch(0.994 0 89.876 / 0.06);
+  --openui-border-interactive: oklch(0.994 0 89.876 / 0.12);
+  --openui-border-interactive-emphasis: oklch(0.994 0 89.876 / 0.4);
+  --openui-border-interactive-selected: oklch(0.985 0 89.876 / 1);
+  --openui-border-accent: oklch(0.546 0.215 262.881 / 0.2);
+  --openui-border-accent-emphasis: oklch(0.546 0.215 262.881 / 0.4);
+  --openui-shadow-s: 0 1px 3px -2px oklch(0 0 0 / 0.06), 0 2px 5px -2px oklch(0 0 0 / 0.10);
+  --openui-shadow-m: 0 4px 6px -2px oklch(0 0 0 / 0.08), 0 2px 2px -2px oklch(0 0 0 / 0.12);
+  --openui-shadow-l: 0 4px 4px -2px oklch(0 0 0 / 0.12), 0 4px 8px -2px oklch(0 0 0 / 0.10);
+  --openui-shadow-xl: 0 8px 16px -4px oklch(0 0 0 / 0.16), 0 16px 32px -6px oklch(0 0 0 / 0.20);
+  --openui-shadow-2xl: 0 12px 24px -6px oklch(0 0 0 / 0.20), 0 24px 48px -8px oklch(0 0 0 / 0.24);
+  --openui-shadow-3xl: 0 16px 32px -8px oklch(0 0 0 / 0.24), 0 32px 64px -12px oklch(0 0 0 / 0.28);
+  color-scheme: dark;
+}
+
+/* ---------- type styles ---------- */
+.openui-text-heading-xs {
+  font: 600 16px/1.25 var(--font-sans);
+  letter-spacing: -0.01em;
+}
+.openui-text-heading-sm {
+  font: 600 18px/1.25 var(--font-sans);
+  letter-spacing: -0.01em;
+}
+.openui-text-heading-md {
+  font: 600 24px/1.1 var(--font-sans);
+  letter-spacing: -0.01em;
+}
+.openui-text-heading-lg {
+  font: 600 28px/1.1 var(--font-sans);
+  letter-spacing: -0.1px;
+}
+.openui-text-heading-xl {
+  font: 700 32px/1.1 var(--font-sans);
+  letter-spacing: -0.1px;
+}
+.openui-text-body-xs {
+  font: 440 12px/1.5 var(--font-sans);
+  letter-spacing: -0.01em;
+}
+.openui-text-body-xs-heavy {
+  font: 560 12px/1.5 var(--font-sans);
+  letter-spacing: -0.01em;
+}
+.openui-text-body-sm {
+  font: 440 14px/1.5 var(--font-sans);
+  letter-spacing: -0.01em;
+}
+.openui-text-body-sm-heavy {
+  font: 560 14px/1.5 var(--font-sans);
+  letter-spacing: -0.01em;
+}
+.openui-text-body-default {
+  font: 440 16px/1.5 var(--font-sans);
+  letter-spacing: -0.01em;
+}
+.openui-text-body-default-heavy {
+  font: 560 16px/1.5 var(--font-sans);
+  letter-spacing: -0.01em;
+}
+.openui-text-body-lg {
+  font: 440 18px/1.5 var(--font-sans);
+  letter-spacing: -0.01em;
+}
+.openui-text-body-lg-heavy {
+  font: 560 18px/1.5 var(--font-sans);
+  letter-spacing: -0.01em;
+}
+.openui-text-label-xs {
+  font: 440 12px/1.25 var(--font-sans);
+  letter-spacing: -0.01em;
+}
+.openui-text-label-xs-heavy {
+  font: 560 12px/1.25 var(--font-sans);
+  letter-spacing: -0.01em;
+}
+.openui-text-label-sm {
+  font: 440 14px/1.25 var(--font-sans);
+  letter-spacing: -0.01em;
+}
+.openui-text-label-sm-heavy {
+  font: 560 14px/1.25 var(--font-sans);
+  letter-spacing: -0.01em;
+}
+.openui-text-label-default {
+  font: 440 16px/1.25 var(--font-sans);
+  letter-spacing: -0.01em;
+}
+.openui-text-label-default-heavy {
+  font: 560 16px/1.25 var(--font-sans);
+  letter-spacing: -0.01em;
+}
+.openui-text-label-lg {
+  font: 440 18px/1.25 var(--font-sans);
+  letter-spacing: -0.01em;
+}
+.openui-text-label-lg-heavy {
+  font: 560 18px/1.25 var(--font-sans);
+  letter-spacing: -0.01em;
+}
+.openui-text-numbers-xs {
+  font: 440 12px/1.5 var(--font-sans);
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+}
+.openui-text-numbers-xs-heavy {
+  font: 560 12px/1.5 var(--font-sans);
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+}
+.openui-text-numbers-sm {
+  font: 440 14px/1.5 var(--font-sans);
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+}
+.openui-text-numbers-sm-heavy {
+  font: 560 14px/1.5 var(--font-sans);
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+}
+.openui-text-numbers-default {
+  font: 440 16px/1.5 var(--font-sans);
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+}
+.openui-text-numbers-default-heavy {
+  font: 560 16px/1.5 var(--font-sans);
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+}
+.openui-text-numbers-lg {
+  font: 440 18px/1.5 var(--font-sans);
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+}
+.openui-text-numbers-lg-heavy {
+  font: 560 18px/1.5 var(--font-sans);
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+}
+.openui-text-numbers-heading-sm {
+  font: 600 18px/1.25 var(--font-sans);
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+}
+.openui-text-numbers-heading-md {
+  font: 600 24px/1.1 var(--font-sans);
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+}
+.openui-text-numbers-heading-lg {
+  font: 600 28px/1.1 var(--font-sans);
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+}
+.openui-text-numbers-heading-xl {
+  font: 600 32px/1.1 var(--font-sans);
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+}
+.openui-text-code-sm {
+  font: 400 12px/1.5 var(--font-mono);
+  letter-spacing: 0px;
+}
+.openui-text-code-sm-heavy {
+  font: 700 12px/1.5 var(--font-mono);
+  letter-spacing: 0px;
+}
+.openui-text-code-default {
+  font: 400 14px/1.5 var(--font-mono);
+  letter-spacing: 0px;
+}
+.openui-text-code-default-heavy {
+  font: 700 14px/1.5 var(--font-mono);
+  letter-spacing: 0px;
+}
+
+/* Graphite components — plain-CSS recreation of OpenUI react-ui component styles
+   (thesysdev/openui@c9f93b6, packages/react-ui/src/components/*\/*.scss).
+   Reads only --openui-* tokens. Class names match OpenUI's so markup ports both ways. */
+
+/* ---------- base ---------- */
+.openui-root,
+.openui-root * {
+  box-sizing: border-box;
+}
+.openui-root {
+  font: 440 16px/1.5 var(--font-sans, "Inter", system-ui, sans-serif);
+  letter-spacing: -0.01em;
+  color: var(--openui-text-neutral-primary);
+  background: var(--openui-background);
+  -webkit-font-smoothing: antialiased;
+}
+/* Intentional addition: OpenUI ships no visible keyboard focus on buttons/tabs. */
+.openui-root :is(button, [role="tab"], a, input[type="checkbox"], input[type="radio"]):focus-visible {
+  outline: 2px solid var(--openui-border-interactive-selected);
+  outline-offset: 2px;
+}
+
+/* ---------- Button (components/Button/button.scss) ---------- */
+.openui-button-base {
+  box-sizing: border-box;
+  font: 440 16px/1.25 var(--font-sans, "Inter", sans-serif);
+  letter-spacing: -0.01em;
+  border-radius: var(--openui-radius-l);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.12s ease;
+  display: inline-flex;
+  gap: var(--openui-space-xs);
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  text-decoration: none;
+}
+.openui-button-base svg {
+  height: 1em;
+  width: 1em;
+}
+.openui-button-base-primary {
+  background-color: var(--openui-interactive-accent-default);
+  color: var(--openui-text-accent-primary);
+  border-color: var(--openui-border-accent);
+  box-shadow: var(--openui-shadow-m);
+}
+.openui-button-base-primary:not(:disabled):hover {
+  background-color: var(--openui-interactive-accent-hover);
+  box-shadow: none;
+}
+.openui-button-base-primary:disabled {
+  background-color: var(--openui-interactive-accent-disabled);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+.openui-button-base-primary:not(:disabled):active {
+  background-color: var(--openui-interactive-accent-pressed);
+}
+.openui-button-base-secondary {
+  background-color: transparent;
+  color: var(--openui-text-neutral-primary);
+  border-color: var(--openui-border-interactive);
+  box-shadow: var(--openui-shadow-m);
+}
+.openui-button-base-secondary:not(:disabled):hover,
+.openui-button-base-secondary:not(:disabled):active {
+  background-color: var(--openui-highlight);
+  box-shadow: none;
+}
+.openui-button-base-secondary:disabled {
+  background-color: transparent;
+  box-shadow: none;
+  color: var(--openui-text-neutral-tertiary);
+  cursor: not-allowed;
+}
+.openui-button-base-tertiary {
+  background-color: transparent;
+  color: var(--openui-text-neutral-primary);
+}
+.openui-button-base-tertiary:not(:disabled):hover {
+  background-color: var(--openui-highlight);
+}
+.openui-button-base-tertiary:not(:disabled):active {
+  background-color: var(--openui-highlight);
+  border-color: var(--openui-border-interactive);
+}
+.openui-button-base-tertiary:disabled {
+  border-color: var(--openui-border-default);
+  color: var(--openui-text-neutral-tertiary);
+  cursor: not-allowed;
+}
+.openui-button-base-destructive-primary {
+  background-color: var(--openui-interactive-destructive-accent-default);
+  color: var(--openui-text-danger-inverted-primary);
+  border-color: var(--openui-border-accent);
+}
+.openui-button-base-destructive-primary:not(:disabled):hover {
+  background-color: var(--openui-interactive-destructive-accent-hover);
+}
+.openui-button-base-destructive-primary:not(:disabled):active {
+  background-color: var(--openui-interactive-destructive-accent-pressed);
+}
+.openui-button-base-destructive-primary:disabled {
+  background-color: var(--openui-interactive-destructive-accent-disabled);
+  cursor: not-allowed;
+}
+.openui-button-base-destructive-secondary {
+  background-color: var(--openui-interactive-destructive-default);
+  color: var(--openui-text-danger-primary);
+  border-color: var(--openui-border-danger);
+}
+.openui-button-base-destructive-secondary:not(:disabled):hover,
+.openui-button-base-destructive-secondary:not(:disabled):active {
+  background-color: var(--openui-interactive-destructive-hover);
+}
+.openui-button-base-destructive-secondary:disabled {
+  background-color: var(--openui-interactive-destructive-disabled);
+  color: var(--openui-text-danger-tertiary);
+  cursor: not-allowed;
+}
+.openui-button-base-destructive-tertiary {
+  background-color: transparent;
+  border-color: transparent;
+  color: var(--openui-text-danger-primary);
+}
+.openui-button-base-destructive-tertiary:not(:disabled):hover {
+  background-color: var(--openui-interactive-destructive-hover);
+}
+.openui-button-base-destructive-tertiary:not(:disabled):active {
+  background-color: var(--openui-interactive-destructive-hover);
+  border-color: var(--openui-border-danger);
+}
+.openui-button-base-destructive-tertiary:disabled {
+  color: var(--openui-text-danger-tertiary);
+  cursor: not-allowed;
+}
+.openui-button-base-extra-small {
+  border-radius: var(--openui-radius-s);
+  padding: calc(var(--openui-space-xs) - 1.75px) var(--openui-space-s);
+  font-size: 14px;
+}
+.openui-button-base-small {
+  border-radius: calc(var(--openui-radius-s) + 1px);
+  padding: calc(var(--openui-space-s) - 1.75px) var(--openui-space-s-m);
+  font-size: 14px;
+}
+.openui-button-base-medium {
+  padding: calc(var(--openui-space-s) - 1px) var(--openui-space-s-m);
+  border-radius: var(--openui-radius-m);
+}
+.openui-button-base-large {
+  padding: calc(var(--openui-space-s-m) - 1px) var(--openui-space-m);
+}
+
+/* ---------- IconButton (components/IconButton) ---------- */
+.openui-icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.12s ease;
+  padding: 0;
+  flex-shrink: 0;
+  border-radius: var(--openui-radius-m);
+}
+.openui-icon-button svg {
+  width: 16px;
+  height: 16px;
+}
+.openui-icon-button-primary {
+  background-color: var(--openui-interactive-accent-default);
+  color: var(--openui-text-accent-primary);
+  border-color: var(--openui-border-accent);
+  box-shadow: var(--openui-shadow-m);
+}
+.openui-icon-button-primary:not(:disabled):hover {
+  background-color: var(--openui-interactive-accent-hover);
+  box-shadow: none;
+}
+.openui-icon-button-secondary {
+  background-color: transparent;
+  color: var(--openui-text-neutral-primary);
+  border-color: var(--openui-border-interactive);
+  box-shadow: var(--openui-shadow-m);
+}
+.openui-icon-button-secondary:not(:disabled):hover {
+  background-color: var(--openui-highlight);
+  box-shadow: none;
+}
+.openui-icon-button-tertiary {
+  background-color: transparent;
+  color: var(--openui-text-neutral-primary);
+}
+.openui-icon-button-tertiary:not(:disabled):hover {
+  background-color: var(--openui-highlight);
+}
+.openui-icon-button:disabled {
+  color: var(--openui-text-neutral-tertiary);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+.openui-icon-button-primary:disabled {
+  background-color: var(--openui-interactive-accent-disabled);
+  color: var(--openui-text-accent-primary);
+}
+.openui-icon-button-extra-small { width: 28px; height: 28px; border-radius: var(--openui-radius-s); }
+.openui-icon-button-extra-small svg { width: 14px; height: 14px; }
+.openui-icon-button-small { width: 32px; height: 32px; border-radius: calc(var(--openui-radius-s) + 1px); }
+.openui-icon-button-medium { width: 36px; height: 36px; border-radius: var(--openui-radius-m); }
+.openui-icon-button-large { width: 40px; height: 40px; border-radius: var(--openui-radius-l); }
+.openui-icon-button-circle { border-radius: var(--openui-radius-full); }
+
+/* ---------- Input & TextArea (components/Input, components/TextArea) ---------- */
+.openui-input,
+.openui-textarea {
+  font: 440 16px/1.5 var(--font-sans, "Inter", sans-serif);
+  letter-spacing: -0.01em;
+  border: 1px solid var(--openui-border-interactive);
+  width: 100%;
+  background-color: var(--openui-highlight-subtle);
+  color: var(--openui-text-neutral-primary);
+  outline: none;
+  transition:
+    box-shadow 0.16s ease,
+    border-color 0.16s ease,
+    background-color 0.16s ease;
+}
+.openui-input {
+  border-radius: var(--openui-radius-m);
+  padding: calc(var(--openui-space-xs) - 1px) calc(var(--openui-space-m) - 1px);
+}
+.openui-input-small {
+  border-radius: calc(var(--openui-radius-m) - 1px);
+  padding: calc(var(--openui-space-2xs) - 1px) var(--openui-space-s);
+}
+.openui-input-large {
+  border-radius: var(--openui-radius-l);
+  padding: calc(var(--openui-space-s) - 1px) var(--openui-space-m);
+}
+.openui-textarea {
+  border-radius: var(--openui-radius-xl);
+  padding: var(--openui-space-s) var(--openui-space-m);
+  resize: none;
+}
+:is(.openui-input, .openui-textarea)::placeholder {
+  color: var(--openui-text-neutral-secondary);
+}
+:is(.openui-input, .openui-textarea):focus {
+  box-shadow: 0 0 0 2.5px var(--openui-border-default);
+}
+:is(.openui-input, .openui-textarea):not(.openui-input-error):focus {
+  border-color: var(--openui-border-interactive-emphasis);
+}
+:is(.openui-input, .openui-textarea):disabled {
+  background-color: var(--openui-sunk);
+  border-color: var(--openui-border-default);
+  cursor: not-allowed;
+  color: var(--openui-text-neutral-tertiary);
+}
+.openui-input-error,
+.openui-input-error:focus {
+  border-color: var(--openui-border-danger-emphasis);
+  box-shadow: 0 0 0 2.5px var(--openui-border-danger);
+}
+
+/* ---------- Select (components/Select + _menu.scss) ---------- */
+.openui-select-trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--openui-space-s);
+  min-width: 200px;
+  background-color: var(--openui-highlight-subtle);
+  color: var(--openui-text-neutral-primary);
+  font: 440 16px/1.5 var(--font-sans, "Inter", sans-serif);
+  letter-spacing: -0.01em;
+  border: 1px solid var(--openui-border-default);
+  outline: none;
+  cursor: pointer;
+  padding: calc(var(--openui-space-xs) - 1px) calc(var(--openui-space-m) - 1px);
+  border-radius: var(--openui-radius-m);
+}
+.openui-select-trigger:hover,
+.openui-select-trigger[data-state="open"] {
+  background: var(--openui-highlight);
+  border-color: var(--openui-border-interactive);
+}
+.openui-select-trigger[data-placeholder] {
+  color: var(--openui-text-neutral-secondary);
+}
+.openui-select-trigger svg {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.openui-select-trigger[data-state="open"] svg {
+  transform: rotate(180deg);
+}
+.openui-select-content {
+  min-width: 200px;
+  border-radius: var(--openui-radius-2xl);
+  overflow: hidden;
+  background-color: color-mix(in oklch, var(--openui-foreground), var(--openui-text-white) 6%);
+  box-shadow:
+    0 0 0 1px color-mix(in oklch, var(--openui-text-neutral-primary) 6%, transparent),
+    0 4px 12px -2px oklch(0 0 0 / 0.05),
+    0 16px 32px -8px oklch(0 0 0 / 0.08);
+  padding: var(--openui-space-2xs) 0;
+  color: var(--openui-text-neutral-primary);
+}
+.openui-select-label {
+  padding: var(--openui-space-s) var(--openui-space-m-l) var(--openui-space-2xs);
+  color: color-mix(in oklch, var(--openui-text-neutral-primary) 60%, transparent);
+  font-size: 12px;
+  line-height: 12px;
+}
+.openui-select-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 32px;
+  padding: 0 var(--openui-space-m-l);
+  cursor: pointer;
+}
+.openui-select-item:hover,
+.openui-select-item[data-highlighted] {
+  background-color: var(--openui-highlight);
+}
+
+/* ---------- Checkbox, Radio, Switch (components/*Item) ---------- */
+.openui-checkbox-item-container,
+.openui-radio-item-container,
+.openui-switch-item-container {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--openui-space-s);
+  padding: var(--openui-space-3xs) 0;
+  max-width: 100%;
+  cursor: pointer;
+}
+.openui-checkbox-item-root {
+  appearance: none;
+  margin: var(--openui-space-2xs) 0 0;
+  display: inline-grid;
+  place-content: center;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  border-radius: var(--openui-radius-xs);
+  border: 1px solid var(--openui-border-interactive);
+  background-color: transparent;
+  cursor: pointer;
+}
+.openui-checkbox-item-root:not(:disabled):not(:checked):hover {
+  background-color: var(--openui-sunk);
+}
+.openui-checkbox-item-root:checked {
+  background-color: var(--openui-interactive-accent-default);
+  border-color: var(--openui-border-accent);
+}
+.openui-checkbox-item-root:checked::after {
+  content: "";
+  width: 9px;
+  height: 5px;
+  border: solid var(--openui-text-accent-primary);
+  border-width: 0 0 1.75px 1.75px;
+  transform: translateY(-1px) rotate(-45deg);
+}
+.openui-radio-item-root {
+  appearance: none;
+  margin: var(--openui-space-2xs) 0 0;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  border-radius: var(--openui-radius-full);
+  border: 1px solid var(--openui-border-interactive);
+  background-color: var(--openui-foreground);
+  cursor: pointer;
+}
+.openui-radio-item-root:checked {
+  border-color: var(--openui-border-accent);
+  background: radial-gradient(circle, var(--openui-foreground) 0 3px, var(--openui-interactive-accent-default) 3.5px);
+}
+.openui-switch-item-root {
+  appearance: none;
+  position: relative;
+  margin: var(--openui-space-2xs) 0 0;
+  flex-shrink: 0;
+  width: 24px;
+  height: 16px;
+  border-radius: var(--openui-radius-full);
+  border: 1px solid var(--openui-border-default);
+  background-color: var(--openui-sunk);
+  cursor: pointer;
+  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.openui-switch-item-root::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 2px;
+  width: 10px;
+  height: 10px;
+  border-radius: var(--openui-radius-full);
+  background-color: var(--openui-foreground);
+  box-shadow: var(--openui-shadow-s);
+  transform: translateY(-50%);
+  transition: transform 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.openui-switch-item-root:not(:checked):not(:disabled):hover {
+  border-color: var(--openui-border-interactive);
+}
+.openui-switch-item-root:checked {
+  background-color: var(--openui-interactive-accent-default);
+  border-color: var(--openui-border-accent);
+}
+.openui-switch-item-root:checked::after {
+  transform: translateY(-50%) translateX(8px);
+}
+:is(.openui-checkbox-item-root, .openui-radio-item-root, .openui-switch-item-root):disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.openui-item-content {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.openui-item-label {
+  color: var(--openui-text-neutral-primary);
+  overflow-wrap: anywhere;
+}
+.openui-item-description {
+  color: var(--openui-text-neutral-secondary);
+  overflow-wrap: anywhere;
+}
+@media (prefers-reduced-motion: reduce) {
+  .openui-switch-item-root,
+  .openui-switch-item-root::after {
+    transition: none;
+  }
+}
+
+/* ---------- FormControl, Label, Hint ---------- */
+.openui-form-control {
+  display: flex;
+  flex-direction: column;
+  gap: var(--openui-space-s);
+}
+.openui-label {
+  font: 440 16px/1.5 var(--font-sans, "Inter", sans-serif);
+  letter-spacing: -0.01em;
+  color: var(--openui-text-neutral-primary);
+}
+.openui-label-disabled {
+  color: var(--openui-text-neutral-tertiary);
+}
+.openui-label-required-asterisk {
+  margin-left: var(--openui-space-3xs);
+}
+.openui-hint {
+  font: 440 14px/1.5 var(--font-sans, "Inter", sans-serif);
+  letter-spacing: -0.01em;
+  color: var(--openui-text-neutral-secondary);
+  display: flex;
+  align-items: center;
+  gap: var(--openui-space-xs);
+}
+.openui-hint-error {
+  color: var(--openui-text-danger-primary);
+}
+
+/* ---------- Tag (components/Tag/tag.scss) ---------- */
+.openui-tag {
+  display: inline-flex;
+  align-items: center;
+  overflow: hidden;
+  max-width: 100%;
+  gap: var(--openui-space-2xs);
+  font: 440 14px/1.25 var(--font-sans, "Inter", sans-serif);
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+.openui-tag svg {
+  width: 14px;
+  height: 14px;
+  stroke-width: 2.5;
+}
+.openui-tag-sm { padding: var(--openui-space-2xs) var(--openui-space-xs); border-radius: var(--openui-radius-s); height: 24px; }
+.openui-tag-md { padding: var(--openui-space-xs) var(--openui-space-s); border-radius: var(--openui-radius-s); gap: var(--openui-space-xs); height: 32px; }
+.openui-tag-lg { padding: var(--openui-space-s) var(--openui-space-m); border-radius: var(--openui-radius-m); gap: var(--openui-space-xs); height: 36px; }
+.openui-tag-neutral { background-color: var(--openui-sunk); color: var(--openui-text-neutral-primary); }
+.openui-tag-info { background-color: var(--openui-info-background); color: var(--openui-text-info-primary); }
+.openui-tag-success { background-color: var(--openui-success-background); color: var(--openui-text-success-primary); }
+.openui-tag-warning { background-color: var(--openui-alert-background); color: var(--openui-text-alert-primary); }
+.openui-tag-danger { background-color: var(--openui-danger-background); color: var(--openui-text-danger-primary); }
+.openui-tag-purple { background-color: var(--openui-purple-background); color: var(--openui-text-purple-primary); }
+.openui-tag-pink { background-color: var(--openui-pink-background); color: var(--openui-text-pink-primary); }
+
+/* ---------- Callout (components/Callout/callout.scss) ---------- */
+.openui-callout {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0 calc(var(--openui-space-m) + 2px);
+  border-left: 2px solid;
+}
+.openui-callout-info { border-color: var(--openui-border-info-emphasis); }
+.openui-callout-info .openui-callout-title { color: var(--openui-text-info-primary); }
+.openui-callout-danger { border-color: var(--openui-border-danger-emphasis); }
+.openui-callout-danger .openui-callout-title { color: var(--openui-text-danger-primary); }
+.openui-callout-warning { border-color: var(--openui-border-alert-emphasis); }
+.openui-callout-warning .openui-callout-title { color: var(--openui-text-alert-primary); }
+.openui-callout-success { border-color: var(--openui-border-success-emphasis); }
+.openui-callout-success .openui-callout-title { color: var(--openui-text-success-primary); }
+.openui-callout-neutral { border-color: var(--openui-border-interactive-selected); }
+.openui-callout-neutral .openui-callout-title { color: var(--openui-text-neutral-primary); }
+.openui-callout-title {
+  font: 560 16px/1.5 var(--font-sans, "Inter", sans-serif);
+  letter-spacing: -0.01em;
+}
+.openui-callout-description {
+  font: 440 16px/1.5 var(--font-sans, "Inter", sans-serif);
+  letter-spacing: -0.01em;
+  color: var(--openui-text-neutral-primary);
+}
+
+/* ---------- Card (components/Card/card.scss) ---------- */
+.openui-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--openui-space-xl);
+  border: 1px solid transparent;
+  color: var(--openui-text-neutral-primary);
+}
+.openui-card-card {
+  box-shadow: none;
+}
+/* Intentional addition: a raised panel on the foreground surface for app layouts. */
+.openui-card-raised {
+  padding: var(--openui-space-l);
+  border-radius: var(--openui-radius-3xl);
+  background-color: var(--openui-foreground);
+  border-color: var(--openui-border-default);
+}
+.openui-card-clear {
+  padding: 0 var(--openui-space-l);
+  border-radius: var(--openui-radius-3xl);
+  background-color: transparent;
+}
+.openui-card-sunk {
+  padding: var(--openui-space-l);
+  border-radius: var(--openui-radius-3xl);
+  background-color: var(--openui-sunk);
+  border-color: var(--openui-border-default);
+  box-shadow: var(--openui-shadow-m);
+}
+
+/* ---------- Table (components/Table/table.scss) ---------- */
+.openui-table-container {
+  position: relative;
+  width: 100%;
+  overflow: auto;
+  border: 1px solid var(--openui-border-default);
+  border-radius: var(--openui-radius-2xl);
+}
+.openui-table {
+  font: 440 14px/1.5 var(--font-sans, "Inter", sans-serif);
+  letter-spacing: -0.01em;
+  width: 100%;
+  border-collapse: collapse;
+}
+.openui-table :is(th, td) {
+  padding: var(--openui-space-m);
+  color: var(--openui-text-neutral-primary);
+  text-align: left;
+  white-space: nowrap;
+}
+.openui-table th {
+  font-weight: 440;
+  color: var(--openui-text-neutral-secondary);
+  border-bottom: 1px solid var(--openui-border-default);
+}
+.openui-table tbody tr {
+  border-bottom: 1px solid var(--openui-border-default);
+}
+.openui-table tbody tr:nth-child(even) {
+  background-color: var(--openui-highlight-subtle);
+}
+.openui-table tbody tr:last-child {
+  border-bottom: 0;
+}
+.openui-table .openui-table-align-right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Tabs (components/Tabs/tabs.scss) ---------- */
+.openui-tabs {
+  display: flex;
+  flex-direction: column;
+  gap: var(--openui-space-l);
+}
+.openui-tabs-list {
+  display: flex;
+  gap: var(--openui-space-3xs);
+  padding: var(--openui-space-2xs);
+  border-radius: var(--openui-radius-l);
+  background-color: var(--openui-sunk);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.openui-tabs-trigger {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--openui-space-s);
+  padding: var(--openui-space-3xs) var(--openui-space-s);
+  border: 1px solid transparent;
+  border-radius: var(--openui-radius-s);
+  min-width: 7.3rem;
+  width: 100%;
+  background-color: transparent;
+  color: var(--openui-text-neutral-secondary);
+  font: 440 16px/1.25 var(--font-sans, "Inter", sans-serif);
+  letter-spacing: -0.01em;
+}
+.openui-tabs-trigger[aria-selected="true"],
+.openui-tabs-trigger[data-state="active"] {
+  background-color: var(--openui-elevated);
+  border-color: var(--openui-border-default);
+  color: var(--openui-text-neutral-primary);
+  box-shadow: var(--openui-shadow-s);
+}
+.openui-tabs-trigger:not([aria-selected="true"]):not([data-state="active"]):hover {
+  background-color: var(--openui-sunk);
+  border-color: var(--openui-border-default);
+  box-shadow: var(--openui-shadow-s);
+}
+.openui-tabs-clear .openui-tabs-list {
+  gap: var(--openui-space-l);
+  background: none;
+  padding: 0;
+  border-radius: 0;
+}
+.openui-tabs-clear .openui-tabs-trigger {
+  width: auto;
+  min-width: 0;
+  padding: var(--openui-space-s) 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.openui-tabs-clear .openui-tabs-trigger:is([aria-selected="true"], [data-state="active"]) {
+  font-weight: 560;
+  background: transparent;
+  box-shadow: none;
+}
+.openui-tabs-clear .openui-tabs-trigger:hover {
+  color: var(--openui-text-neutral-primary);
+  background: transparent;
+  box-shadow: none;
+}
+
+/* ---------- Separator ---------- */
+.openui-separator {
+  border: 0;
+  margin: 0;
+  background-color: var(--openui-border-default);
+  height: 1px;
+  width: 100%;
+}
+.openui-separator[data-orientation="vertical"] {
+  width: 1px;
+  height: auto;
+  align-self: stretch;
+}
+
+/* ---------- Skeleton (components/Skeleton/skeleton.scss) ---------- */
+@keyframes openui-skeleton-pulse {
+  0% { opacity: 0.3; }
+  50% { opacity: 0.85; }
+  100% { opacity: 0.3; }
+}
+.openui-skeleton-bar {
+  background-color: var(--openui-elevated);
+  border-radius: var(--openui-radius-s);
+  animation: openui-skeleton-pulse 1.2s ease-in-out infinite;
+}
+.openui-skeleton-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--openui-space-s);
+}
+@media (prefers-reduced-motion: reduce) {
+  .openui-skeleton-bar {
+    animation: none;
+    opacity: 0.6;
+  }
+}

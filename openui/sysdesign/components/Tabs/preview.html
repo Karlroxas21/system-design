@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><link rel="stylesheet" href="../../dist/graphite.css"><title>Tabs — preview</title>
+<style>
+  body { margin: 0; }
+  .demo { padding: 20px; display: flex; flex-direction: column; gap: 20px; max-width: 560px; }
+</style>
+</head>
+<body class="openui-root">
+<div class="demo">
+  <div class="openui-tabs-list" role="tablist" aria-label="Report range">
+    <button class="openui-tabs-trigger" role="tab" aria-selected="true">Overview</button>
+    <button class="openui-tabs-trigger" role="tab" aria-selected="false">Activity</button>
+    <button class="openui-tabs-trigger" role="tab" aria-selected="false">Settings</button>
+  </div>
+  <div class="openui-tabs openui-tabs-clear">
+    <div class="openui-tabs-list" role="tablist" aria-label="Project sections">
+      <button class="openui-tabs-trigger" role="tab" aria-selected="true">Members</button>
+      <button class="openui-tabs-trigger" role="tab" aria-selected="false">Billing</button>
+      <button class="openui-tabs-trigger" role="tab" aria-selected="false">Integrations</button>
+    </div>
+  </div>
+</div>
+<script>
+  document.querySelectorAll('[role="tablist"]').forEach(function (list) {
+    list.addEventListener('click', function (e) {
+      var tab = e.target.closest('[role="tab"]');
+      if (!tab) return;
+      list.querySelectorAll('[role="tab"]').forEach(function (t) { t.setAttribute('aria-selected', String(t === tab)); });
+    });
+  });
+</script>
+</body>
+</html>

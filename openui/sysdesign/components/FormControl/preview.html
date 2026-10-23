@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><link rel="stylesheet" href="../../dist/graphite.css"><title>FormControl — preview</title>
+<style>
+  body { margin: 0; }
+  .grid { padding: 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
+</style>
+</head>
+<body class="openui-root">
+<div class="grid">
+  <div class="openui-form-control">
+    <label class="openui-label" for="fc-name">Workspace name<span class="openui-label-required-asterisk" aria-hidden="true">*</span></label>
+    <input class="openui-input" id="fc-name" value="Northwind Studio" aria-describedby="fc-name-hint" required>
+    <p class="openui-hint" id="fc-name-hint" style="margin:0">Shown on invoices and invite emails.</p>
+  </div>
+  <div class="openui-form-control">
+    <label class="openui-label" for="fc-url">Workspace URL</label>
+    <input class="openui-input openui-input-error" id="fc-url" value="northwind studio" aria-invalid="true" aria-describedby="fc-url-hint">
+    <p class="openui-hint openui-hint-error" id="fc-url-hint" style="margin:0">Use letters, numbers and dashes only.</p>
+  </div>
+</div>
+</body>
+</html>

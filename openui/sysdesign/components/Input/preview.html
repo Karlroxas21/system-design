@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><link rel="stylesheet" href="../../dist/graphite.css"><title>Input — preview</title>
+<style>
+  body { margin: 0; }
+  .grid { padding: 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+</style>
+</head>
+<body class="openui-root">
+<div class="grid">
+  <input class="openui-input" id="in-name" value="Northwind Studio" aria-label="Workspace name">
+  <input class="openui-input" id="in-search" placeholder="Search projects" aria-label="Search projects">
+  <input class="openui-input" id="in-focus" value="hello@northwind.studio" aria-label="Email" style="border-color: var(--openui-border-interactive-emphasis); box-shadow: 0 0 0 2.5px var(--openui-border-default);">
+  <input class="openui-input openui-input-error" id="in-err" value="northwind studio" aria-label="Workspace URL" aria-invalid="true">
+  <input class="openui-input openui-input-small" id="in-sm" placeholder="Small · filter rows" aria-label="Filter rows">
+  <input class="openui-input" id="in-dis" value="Billing owner only" aria-label="Plan" disabled>
+</div>
+</body>
+</html>

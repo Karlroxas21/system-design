@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><link rel="stylesheet" href="../../dist/graphite.css"><title>Card — preview</title>
+<style>
+  body { margin: 0; }
+  .grid { padding: 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; align-items: start; }
+  .head { display: flex; flex-direction: column; gap: 4px; }
+  .title { font: 600 18px/1.25 var(--font-sans); letter-spacing: -0.01em; margin: 0; }
+  .meta { font: 440 14px/1.5 var(--font-sans); color: var(--openui-text-neutral-secondary); margin: 0; }
+  .fig { font: 600 28px/1.1 var(--font-sans); letter-spacing: -0.01em; font-variant-numeric: tabular-nums; }
+  .row { display: flex; gap: 8px; flex-wrap: wrap; }
+</style>
+</head>
+<body class="openui-root">
+<div class="grid">
+  <section class="openui-card openui-card-raised">
+    <div class="head">
+      <h3 class="title">Monthly revenue</h3>
+      <p class="meta">October 2026 · updated 2 hours ago</p>
+    </div>
+    <div class="fig">$48,210</div>
+    <div class="row">
+      <button class="openui-button-base openui-button-base-secondary openui-button-base-small">View report</button>
+      <button class="openui-button-base openui-button-base-tertiary openui-button-base-small">Share</button>
+    </div>
+  </section>
+  <section class="openui-card openui-card-sunk">
+    <div class="head">
+      <h3 class="title">Storage</h3>
+      <p class="meta">38.2 GB of 50 GB used</p>
+    </div>
+    <div class="row"><span class="openui-tag openui-tag-sm openui-tag-warning">76% full</span></div>
+  </section>
+</div>
+</body>
+</html>
